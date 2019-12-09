@@ -1,5 +1,5 @@
-<h2>Movies</h2>
-<p>Search for a movie by park name, title, or even day of the week!</p>
+<h2>Stocks</h2>
+<p>Search Stock by Symbol! The result will be listed here!</p>
 <input id="searchbar" type="text" placeholder="Search">
 <input type="checkbox" name="vehicle1" value="Bike" checked>Upcoming Events<br>
 <ul id='movie-list'></ul>
@@ -19,7 +19,8 @@
       }
 
       var input = document.getElementById("searchbar");
-      var movie_list = $('#movie-list'); // movie list
+      var movie_list = $('#movie-list'); // stock list
+      var apikey = "RDGNO0SXDIJ85QUQ"; // api key
       var url = " ";
 
       input.addEventListener("keyup", function(e) {
@@ -38,12 +39,12 @@
            // find by park
            else if (input.value.toLowerCase().includes("park")) {
              var park_name = parseString(input.value);
-             url = "https://data.cityofchicago.org/resource/7piw-z6r6.json?park=" + park_name;
+             url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + input + "&interval=5min&apikey=" + apikey;
            }
            // search by movie title
            else {
              var movie_title = parseString(input.value);
-             url = "https://data.cityofchicago.org/resource/7piw-z6r6.json?title=" + movie_title;
+             url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + movie_title + "&interval=5min&apikey=" + apikey;
            }
 
           $.ajax({
@@ -51,7 +52,7 @@
             type: "GET",
             data: {
               "$limit" : 5000,
-              "$$app_token" : "guIFCBBz20RaL7RHQPqYrLM7M"
+              "$$app_token" : apikey
             }
           }).done(function(data) {
             console.log(data);
