@@ -39,7 +39,7 @@ define(["require", "exports", 'Scripts/MindFusion.Charting'], function (require,
 	updateStock();
 
 	function updateStock() {
-		$.getJSON("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + "AAPL" + "&interval=1min&apikey=" + apikey, function(json) {
+		$.getJSON("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=1min&apikey=" + apikey, function(json) {
 		  var times = json["Time Series (1min)"];
 			var update = false;
 
