@@ -28,24 +28,9 @@
           e.preventDefault(); // prevent default behavior
           movie_info_list.length = 0;
 
-          // search by day of the week
-          if (input.value.toLowerCase() == "sunday" || input.value.toLowerCase() == "monday"
-           || input.value.toLowerCase() == "tuesday" || input.value.toLowerCase() == "wednesday"
-           || input.value.toLowerCase() == "thursday" || input.value.toLowerCase() == "friday"
-           || input.value.toLowerCase() == "saturday") {
-             var day = input.value.charAt(0).toUpperCase() + input.value.substring(1, 3);
-             url = "https://data.cityofchicago.org/resource/7piw-z6r6.json?day=" + day;
-           }
-           // find by park
-           else if (input.value.toLowerCase().includes("park")) {
-             var park_name = parseString(input.value);
-             url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + input + "&interval=5min&apikey=" + apikey;
-           }
-           // search by movie title
-           else {
-             var movie_title = parseString(input.value);
-             url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + movie_title + "&interval=5min&apikey=" + apikey;
-           }
+          // search by stock symbol
+          var movie_title = parseString(input.value);
+          url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + movie_title + "&interval=5min&apikey=" + apikey;
 
           $.ajax({
             url: url,
@@ -58,7 +43,7 @@
             console.log(data);
             $.each(data, function(i, d) {
               movie_list.append('<li><div class="movie-card">'
-                + "<h5>Stock Symbol: " + d.Symbols + "</h5>"
+                + "<h5>Stock Symbol: " + d.Symbol + "</h5>"
                 + "<p>Obtained" + d.Information + "</p>"
                 + '</div></li>');
               movie_info_list.push(d);
