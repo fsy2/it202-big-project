@@ -43,8 +43,9 @@
             console.log(data);
             $.each(data, function(i, d) {
               movie_list.append('<li><div class="movie-card">'
-                + "<h5>Stock Symbol: " + d.Symbol + "</h5>"
-                + "<p>Obtained" + d.Information + "</p>"
+                + "<h5>Stock Symbol: " + d['Meta Data']['2. Symbol'] + "</h5>"
+                + "<p>Obtained: " + d.Information + "</p>"
+                + "<p>"
                 + '</div></li>');
               movie_info_list.push(d);
               location_list.push(d.location);
