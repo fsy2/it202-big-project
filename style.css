@@ -1,0 +1,35 @@
+body {
+  background-color: #2e2e38;
+}
+
+h1, h2, h3 {
+  font-family: Arial;
+  text-align: center;
+}
+
+p {
+  font-family: Arial;
+}
+
+.title-card {
+  padding-bottom: 700px;
+}
+
+#general-trends-title {
+  color: #f2f2f2;
+  font-size: 72px;
+  padding-top: 200px;
+  text-align: center;
+}
+
+#general-trends-subtitle {
+  color: #0fbd66;
+  font-size: 18px;
+  margin-top: -30px;
+  text-align: center;
+}
+
+#who-we-are-h2 {
+  color: #f2f2f2;
+  font-size: 36px;
+}
