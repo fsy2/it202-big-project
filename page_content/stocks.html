@@ -1,0 +1,52 @@
+<h2>Stocks</h2>
+<p>Here you will find the current metrics of a stock</p>
+<input type="text" placeholder="Search..">
+<ul id='stock-list'></ul>
+
+<script>
+  $(document).ready(function() {
+      var input = document.getElementById("searchbar");
+      var movie_list = $('#stock-list'); // movie list
+      var apikey = "RDGNO0SXDIJ85QUQ";
+      var url = " ";
+
+      input.addEventListener("keyup", function(e) {
+        if (e.keyCode == 13) { // toggle upon pressing the enter key
+          e.preventDefault(); // prevent default behavior
+          movie_info_list.length = 0;
+
+          var movie_title = input.value.toUpperCase();
+          url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=" + apikey;
+
+          $.ajax({
+            url: url,
+            type: "GET",
+            data: {
+              "$limit" : 5000,
+              "$$app_token" : "guIFCBBz20RaL7RHQPqYrLM7M"
+            }
+          }).done(function(data) {
+            console.log(data);
+            $.each(data, function(i, d) {
+              movie_list.append('<li><div class="movie-card">'
+                + "<h5>Stock Symbol: " + data['Meta Data']['2. Symbol'] + "</h5>"
+                + '</div></li>');
+              movie_info_list.push(d);
+              location_list.push(d.location);
+            });
+          });
+        }
+      });
+  });
+</script>
+
+<style media="screen">
+  h2 {
+    font-family: Arial;
+    text-align: center;
+  }
+
+  .movie-card {
+    padding-top: 50px;
+  }
+</style>
