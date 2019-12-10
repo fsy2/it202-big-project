@@ -7,8 +7,7 @@
     var apikey = "RDGNO0SXDIJ85QUQ";
     var url = " ";
 
-    var stock_symbol = input.value.toUpperCase();
-    url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + String(stock_symbol) + "&interval=5min&apikey=" + apikey;
+    url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=USD&apikey=" + apikey";
 
     $.ajax({
       url: url,
@@ -18,13 +17,11 @@
         "$$app_token" : "RDGNO0SXDIJ85QUQ"
       }
     }).done(function(data) {
-      console.log(data);
-      $.each(data, function(i, d) {
-        crypto_list.append('<li><div class="stock-card">'
-          + "<h5>Stock Symbol: " + d['Meta Data']['2. Symbol'] + "</h5>"
-          + "<h5>Price: " + d['Time Series (5min)']['1. open'] + "</h5>"
-          + '</div></li>');
-      });
+      crypto_list.append('<li><div class="stock-card">'
+        + "<h5>Stock Symbol: " + d["Realtime Currency Exchange Rate"]["2. From_Currency Name"]
+        + " to " + d["Realtime Currency Exchange Rate"]["2. To_Currency Name"] + "</h5>"
+        + "<h5>Price: " + d["Realtime Currency Exchange Rate"]["2. Ask Price"] + "</h5>"
+        + '</div></li>');
     });
   });
 </script>
