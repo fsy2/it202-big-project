@@ -1,6 +1,6 @@
 <h2>Stocks</h2>
 <p>Here you will find the current metrics of a stock</p>
-<input id="searchbar type="text" placeholder="Search..">
+<input id="searchbar" type="text" placeholder="Search..">
 <ul id='stock-list'></ul>
 
 <script>
@@ -11,8 +11,8 @@
       var url = " ";
 
       input.addEventListener("keyup", function(e) {
-        if (e.keyCode == 13) { // toggle upon pressing the enter key
-          // e.preventDefault(); // prevent default behavior
+        if (e.keyCode === 13) { // toggle upon pressing the enter key
+          e.preventDefault(); // prevent default behavior
           alert("hello");
 
           var stock_symbol = input.value.toUpperCase();
@@ -29,7 +29,6 @@
             console.log(data);
             $.each(data, function(i, d) {
               stock_list.append('<li><div class="stock-card">'
-                + "<p>hello</p>"
                 + "<h5>Stock Symbol: " + d['Meta Data']['2. Symbol'] + "</h5>"
                 + "<h5>Price: " + d['Time Series (5min)']['1. open'] + "</h5>"
                 + '</div></li>');
@@ -40,7 +39,7 @@
   });
 </script>
 
-<style media="screen">
+<style>
   h2 {
     font-family: Arial;
     text-align: center;
