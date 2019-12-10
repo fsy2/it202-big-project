@@ -5,24 +5,19 @@ define(["require", "exports", 'Scripts/MindFusion.Charting'], function (require,
 	var Controls = m.MindFusion.Charting.Controls;
 	var Collections = m.MindFusion.Charting.Collections;
 	var Drawing = m.MindFusion.Charting.Drawing;
-
 	var stockChart = new Controls.CandlestickChart(document.getElementById('stockChart'));
 
 	stockChart.title = "Stock Performance Chart";
 	stockChart.theme.titleFontSize = 16;
-
 	stockChart.candlestickWidth = 12;
-
 	stockChart.showLegend = false;
 	stockChart.showXCoordinates = false;
 	stockChart.xAxisLabelRotationAngle = 30;
-
 	stockChart.xAxis.minValue = 0;
 	stockChart.xAxis.interval = 1;
 	stockChart.xAxis.maxValue = 40;
 	stockChart.xAxis.title = "Time";
 	stockChart.yAxis.title = "Price";
-
 	stockChart.gridType = Charting.GridType.Horizontal;
 	stockChart.theme.gridColor1 = new Drawing.Color("#ffffff");
 	stockChart.theme.gridColor2 = new Drawing.Color("#fafafa");

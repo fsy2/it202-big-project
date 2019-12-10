@@ -14,10 +14,10 @@
     dataType: 'json',
     contentType: "application/json",
     success: function(data){
-      crypto_list.append('<li><div class="stock-card">'
-        + "<h5>Stock Symbol: " + String(d["Realtime Currency Exchange Rate"]["2. From_Currency Name"])
-        + " to " + d["Realtime Currency Exchange Rate"]["2. To_Currency Name"] + "</h5>"
-        + "<h5>Price: " + d["Realtime Currency Exchange Rate"]["2. Ask Price"] + "</h5>"
+      crypto_list.append('<li><div class="crypto-card">'
+        + "<h5>Stock Symbol: " + String(data["Realtime Currency Exchange Rate"]["2. From_Currency Name"])
+        + " to " + data["Realtime Currency Exchange Rate"]["2. To_Currency Name"] + "</h5>"
+        + "<h5>Price: " + data["Realtime Currency Exchange Rate"]["2. Ask Price"] + "</h5>"
         + '</div></li>');
     }
   });
@@ -27,5 +27,9 @@
   h2 {
     font-family: Arial;
     text-align: center;
+  }
+
+  .crypto-card {
+    padding-top: 50px;
   }
 </style>
