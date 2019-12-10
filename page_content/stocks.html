@@ -29,7 +29,8 @@
             console.log(data);
             $.each(data, function(i, d) {
               stock_list.append('<li><div class="stock-card">'
-                + "<h5>Stock Symbol: " + data['Meta Data']['2. Symbol'] + "</h5>"
+                + "<h5>Stock Symbol: " + d['Meta Data']['2. Symbol'] + "</h5>"
+                + "<h5>Price: " + d['Time Series (5min)']['1. open'] + "</h5>"
                 + '</div></li>');
             });
           });
