@@ -1,4 +1,33 @@
 <h2>Cryptocurrency Rates</h2>
+<ul id='crypto-list'></ul>
+
+<script>
+  $(document).ready(function() {
+    var crypto_list = $('#crypto-list'); // movie list
+    var apikey = "RDGNO0SXDIJ85QUQ";
+    var url = " ";
+
+    var stock_symbol = input.value.toUpperCase();
+    url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + String(stock_symbol) + "&interval=5min&apikey=" + apikey;
+
+    $.ajax({
+      url: url,
+      type: "GET",
+      data: {
+        "$limit" : 5000,
+        "$$app_token" : "RDGNO0SXDIJ85QUQ"
+      }
+    }).done(function(data) {
+      console.log(data);
+      $.each(data, function(i, d) {
+        crypto_list.append('<li><div class="stock-card">'
+          + "<h5>Stock Symbol: " + d['Meta Data']['2. Symbol'] + "</h5>"
+          + "<h5>Price: " + d['Time Series (5min)']['1. open'] + "</h5>"
+          + '</div></li>');
+      });
+    });
+  });
+</script>
 
 <style media="screen">
   h2 {

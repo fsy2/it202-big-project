@@ -1,6 +1,6 @@
 <h2>Stocks</h2>
 <p>Here you will find the current metrics of a stock</p>
-<input id="searchbar" type="text" placeholder="Search..">
+<input id="searchbar" type="text" placeholder="Search">
 <ul id='stock-list'></ul>
 
 <script>
@@ -16,7 +16,7 @@
           alert("hello");
 
           var stock_symbol = input.value.toUpperCase();
-          url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + stock_symbol + "&interval=5min&apikey=" + apikey;
+          url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + String(stock_symbol) + "&interval=5min&apikey=" + apikey;
 
           $.ajax({
             url: url,
