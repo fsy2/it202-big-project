@@ -10,19 +10,16 @@
     url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=USD&apikey=" + apikey";
 
     $.ajax({
-      url: url,
-      type: "GET",
-      data: {
-        "$limit" : 5000,
-        "$$app_token" : "RDGNO0SXDIJ85QUQ"
-      }
-    }).done(function(data) {
+    url: url,
+    dataType: 'json',
+    contentType: "application/json",
+    success: function(data){
       crypto_list.append('<li><div class="stock-card">'
-        + "<h5>Stock Symbol: " + d["Realtime Currency Exchange Rate"]["2. From_Currency Name"]
+        + "<h5>Stock Symbol: " + String(d["Realtime Currency Exchange Rate"]["2. From_Currency Name"])
         + " to " + d["Realtime Currency Exchange Rate"]["2. To_Currency Name"] + "</h5>"
         + "<h5>Price: " + d["Realtime Currency Exchange Rate"]["2. Ask Price"] + "</h5>"
         + '</div></li>');
-    });
+    }
   });
 </script>
 
